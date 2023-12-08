@@ -48,5 +48,8 @@ class Lelu
 	}
 	
 	// Tähän vielä metodi, joka tulostaa olion tiedot:
-	
+	public void tulostaTiedot()
+	{
+		System.out.println("Lelu: " + nimi +", Paino: " + paino + "kg, ");
+	}
 }// Lelu luokan loppu
