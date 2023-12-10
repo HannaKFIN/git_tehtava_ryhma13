@@ -53,3 +53,29 @@ class Lelu
 		System.out.println("Lelu: " + nimi +", Paino: " + paino + "kg, ");
 	}
 }// Lelu luokan loppu
+
+//Vieteriauto luokka
+
+class Vieteriauto extends Lelu
+{
+	int nopeus;
+	
+	public Vieteriauto() {
+		nimi  = "";
+		paino = 0;
+		nopeus = 0;
+	}
+	
+	public Vieteriauto(String n, int p, int s) {
+		nimi = n;
+		paino = p;
+		nopeus = s;
+	}
+	// Kiihdyta metodi vieteriautolle
+	public void kiihdyta() {
+		nopeus += 1;
+	}
+	public void tulostaTiedot() {
+		System.out.println("Lelu: " + nimi +", Paino:"  + paino + "kg, " + "Nopeus: " + nopeus + "km/h");
+	}
+}
