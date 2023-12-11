@@ -25,6 +25,22 @@ public class Main {
 //		Entä, jos muutat Lelu-luokan “tietojen tulostus” -metodin näkyvyydeksi private tai protected...?
 //
 //		Jos intoa vielä riittää, periytä Lelu-luokasta jokin toinen luokka.
+		
+		Lelu nalle = new Lelu("Nalle", 0.14);
+		nalle.tulostaTiedot();
+		
+		Vieteriauto auto1 = new Vieteriauto("Auto1", 0.5, 0);
+		System.out.println();
+		
+		auto1.tulostaTiedot();
+		auto1.kiihdyta();
+		auto1.tulostaTiedot();
+		auto1.kiihdyta();
+		auto1.tulostaTiedot();
+		System.out.println();
+		
+		Juna juna1 = new Juna("Juna", 0.4, 4);
+		juna1.tulostaTiedot();
 
 	}
 
@@ -32,8 +48,9 @@ public class Main {
 
 class Lelu
 {
-	String nimi;
-	int paino;
+	// protectedilla attribuutit näkyvät perivälle luokalle, privatella eivät
+	protected String nimi;
+	protected double paino;
 	
 	// Muodostimet:
 	// Oletusmuodostin:
@@ -42,15 +59,15 @@ class Lelu
 		paino = 0;
 	}
 	// Parametrinen muodostin:
-	public Lelu(String n, int p) {
+	public Lelu(String n, double p) {
 		nimi = n;
 		paino = p;
 	}
 	
 	// Tähän vielä metodi, joka tulostaa olion tiedot:
-	public void tulostaTiedot()
+	protected void tulostaTiedot()
 	{
-		System.out.println("Lelu: " + nimi +", Paino: " + paino + "kg, ");
+		System.out.println("Lelu: " + nimi +", Paino: " + paino + "kg");
 	}
 }// Lelu luokan loppu
 
@@ -66,7 +83,7 @@ class Vieteriauto extends Lelu
 		nopeus = 0;
 	}
 	
-	public Vieteriauto(String n, int p, int s) {
+	public Vieteriauto(String n, double p, int s) {
 		nimi = n;
 		paino = p;
 		nopeus = s;
@@ -75,7 +92,33 @@ class Vieteriauto extends Lelu
 	public void kiihdyta() {
 		nopeus += 1;
 	}
+	@Override
 	public void tulostaTiedot() {
 		System.out.println("Lelu: " + nimi +", Paino:"  + paino + "kg, " + "Nopeus: " + nopeus + "km/h");
 	}
-}
+	
+}// Vieteriauto luokan loppu
+
+class Juna extends Lelu
+{
+	
+	int vaunujenMaara;
+	
+	// Oletusmuodostin:
+	public Juna() {
+		nimi = "";
+		paino = 0;
+		vaunujenMaara = 0;
+	}
+	// Parametrinen muodostin:
+	public Juna(String n, double p, int vM) {
+		nimi = n;
+		paino = p;
+		vaunujenMaara = vM;
+	}
+	@Override
+	public void tulostaTiedot() {
+		System.out.println("Lelu: " + nimi +", Paino:"  + paino + "kg, " + "Vaunujen määrä: " + vaunujenMaara + "kpl");
+	}
+	
+}// Juna luokan loppu
